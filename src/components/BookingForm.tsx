@@ -41,7 +41,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        access_key: "b5aeeaeb-a569-4548-8a45-3c843229250b", // Replace this with your Web3Forms key
+        access_key: "6b7d72d3-0f89-4049-b7a9-9bc13644d6c1", // Replace this with your Web3Forms key
         subject: "New Booking Request from Website",
         from_name: validatedData.name,
         ...validatedData,
@@ -118,7 +118,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </div>
                 <div>
                   <p className="font-semibold text-lg mb-1">Your Travel Partner</p>
-                  <p className="text-muted-foreground">Sajan Jadhav</p>
+                  <p className="text-muted-foreground">Sajan jadhav & Madan jadhav</p>
                   <p className="text-sm text-muted-foreground">Owner & Travel Consultant</p>
                 </div>
               </div>

@@ -47,7 +47,7 @@ const Hero = () => {
         </div>
 
         <p className="mt-6 text-sm opacity-90">
-          Sajan Jadhav — Owner & Travel Consultant
+          Sajan jadhav & Madan jadhav — Owner & Travel Consultant
         </p>
       </div>
     </section>
