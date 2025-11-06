@@ -1,9 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Briefcase } from "lucide-react";
-import innovaCar from "@/assets/toyota-innova.jpg";
-import auraCar from "@/assets/hyundai-aura.jpg";
-import dzireCar from "@/assets/swift-desire.jpg";
+import innovaCar from "@/assets/innova-car.jpg";
+import auraCar from "@/assets/aura-car.jpg";
+import dzireCar from "@/assets/dzire-car.jpg";
 
 const CarFleet = () => {
   const cars = [

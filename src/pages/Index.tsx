@@ -4,6 +4,9 @@ import Services from "@/components/Services";
 import CarFleet from "@/components/CarFleet";
 import BookingForm from "@/components/BookingForm";
 import Footer from "@/components/Footer";
+import PopularDestinations from "@/components/PopularDestinations";
+import WhyChooseUs from "@/components/WhyChooseUs";
+
 
 const Index = () => {
   return (
@@ -12,6 +15,8 @@ const Index = () => {
       <Hero />
       <Services />
       <CarFleet />
+      <PopularDestinations />
+      <WhyChooseUs />
       <BookingForm />
       <Footer />
     </div>
