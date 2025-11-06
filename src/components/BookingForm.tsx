@@ -25,62 +25,56 @@ const BookingForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      // Validate form data
+      const validatedData = bookingSchema.parse(formData);
+      
+      setIsLoading(true);
 
-  try {
-    // Validate form data
-    const validatedData = bookingSchema.parse(formData);
+      const response = await fetch('/api/submit-booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...validatedData,
+          timestamp: new Date().toISOString()
+        }),
+      });
 
-    setIsLoading(true);
+      if (!response.ok) {
+        throw new Error('Failed to submit booking');
+      }
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: "6b7d72d3-0f89-4049-b7a9-9bc13644d6c1", // Replace this with your Web3Forms key
-        subject: "New Booking Request from Website",
-        from_name: validatedData.name,
-        ...validatedData,
-        timestamp: new Date().toISOString(),
-      }),
-    });
-
-    const result = await response.json();
-
-    if (result.success) {
       toast({
         title: "Booking Request Sent!",
         description: "We'll contact you shortly to confirm your booking.",
       });
 
+      // Reset form
       setFormData({ name: "", phone: "", pickup: "", message: "" });
-    } else {
-      throw new Error(result.message || "Submission failed");
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+      } else {
+        console.error("Booking error:", error);
+        toast({
+          title: "Error",
+          description: "Failed to submit booking. Please try calling us directly.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setIsLoading(false);
     }
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      toast({
-        title: "Validation Error",
-        description: error.errors[0].message,
-        variant: "destructive",
-      });
-    } else {
-      console.error("Booking error:", error);
-      toast({
-        title: "Error",
-        description: "Failed to submit booking. Please try again.",
-        variant: "destructive",
-      });
-    }
-  } finally {
-    setIsLoading(false);
-  }
-};
-
+  };
 
   return (
     <section id="contact" className="py-20 bg-muted/30">
@@ -118,7 +112,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </div>
                 <div>
                   <p className="font-semibold text-lg mb-1">Your Travel Partner</p>
-                  <p className="text-muted-foreground">Sajan jadhav & Madan jadhav</p>
+                  <p className="text-muted-foreground">Madan Jadhav & Sajan Jadhav</p>
                   <p className="text-sm text-muted-foreground">Owner & Travel Consultant</p>
                 </div>
               </div>

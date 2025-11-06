@@ -1,9 +1,16 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Briefcase } from "lucide-react";
-import innovaCar from "@/assets/toyota-innova.jpg";
-import auraCar from "@/assets/hyundai-aura.jpg";
-import dzireCar from "@/assets/swift-desire.jpg";
+import innovaCar from "@/assets/Innova.jpeg";
+import auraCar from "@/assets/aura.jpeg";
+import dzireCar from "@/assets/swift.jpeg";
+import ertigaCar from "@/assets/ertica.jpeg";
 
 const CarFleet = () => {
   const cars = [
@@ -14,7 +21,8 @@ const CarFleet = () => {
       luggage: "3-4 Bags",
       type: "Premium MPV",
       features: ["AC", "Spacious", "Comfortable", "Family Friendly"],
-      description: "Perfect for family trips and group travel with premium comfort"
+      description:
+        "Perfect for family trips and group travel with premium comfort",
     },
     {
       name: "Hyundai Aura",
@@ -23,7 +31,7 @@ const CarFleet = () => {
       luggage: "2-3 Bags",
       type: "Compact Sedan",
       features: ["AC", "Fuel Efficient", "City Rides", "Affordable"],
-      description: "Ideal for city travel and short-distance journeys"
+      description: "Ideal for city travel and short-distance journeys",
     },
     {
       name: "Swift Dzire",
@@ -32,8 +40,17 @@ const CarFleet = () => {
       luggage: "2-3 Bags",
       type: "Premium Sedan",
       features: ["AC", "Comfortable", "Stylish", "Reliable"],
-      description: "Popular choice for both business and leisure travel"
-    }
+      description: "Popular choice for both business and leisure travel",
+    },
+    {
+      name: "Ertiga",
+      image: ertigaCar,
+      capacity: "6-7 Seaters",
+      luggage: "3-4 Bags",
+      type: "SUV / MUV",
+      features: ["Spacious", "AC", "Family-Friendly", "Comfort Ride"],
+      description: "Ideal for family trips and group travel",
+    },
   ];
 
   return (
@@ -50,13 +67,13 @@ const CarFleet = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cars.map((car, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
               <div className="relative h-56 overflow-hidden">
-                <img 
-                  src={car.image} 
+                <img
+                  src={car.image}
                   alt={car.name}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                 />
@@ -64,12 +81,14 @@ const CarFleet = () => {
                   {car.type}
                 </Badge>
               </div>
-              
+
               <CardHeader>
                 <CardTitle className="text-xl">{car.name}</CardTitle>
-                <CardDescription className="text-base">{car.description}</CardDescription>
+                <CardDescription className="text-base">
+                  {car.description}
+                </CardDescription>
               </CardHeader>
-              
+
               <CardContent className="space-y-4">
                 <div className="flex justify-between text-sm">
                   <div className="flex items-center gap-2">
@@ -81,7 +100,7 @@ const CarFleet = () => {
                     <span>{car.luggage}</span>
                   </div>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {car.features.map((feature, idx) => (
                     <Badge key={idx} variant="secondary" className="text-xs">
