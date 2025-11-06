@@ -5,7 +5,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import logo from "@/assets/9journeys-logo.jpg";
+import logo from "@/assets/9journeys-logo.png";
 
 const Header = () => {
   const scrollToSection = (id: string) => {
